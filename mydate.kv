@@ -1,0 +1,113 @@
+#:kivy 2.1.0
+#:import hex kivy.utils.get_color_from_hex
+
+<UI>:
+    hinty_date_1: .125
+    hinty_date_2: .125
+    hinty_status: .38
+    hinty_buttons: .15
+
+    orientation: 'vertical'
+    padding: 0, sp(230), 0, 0
+    canvas:
+        Color:
+            rgb: hex('383F58')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        size_hint_y: root.hinty_date_1
+        padding: sp(10), 0
+        spacing: sp(10)
+        Label:
+            valign: 'center'
+            halign: 'right'
+            text_size: self.size
+            font_size: sp(18)
+            text: "Date 1"
+            size_hint_x: .3
+            color: (0, 1, 1, 1)
+
+        Label:
+            id: date_1_label
+            valign: 'center'
+            halign: 'left'
+            text_size: self.size
+            font_size: sp(18)
+            text: "First time difference"
+            size_hint_x: .7
+
+    BoxLayout:
+        size_hint_y: root.hinty_date_2
+        padding: sp(10), 0
+        spacing: sp(10)
+        Label:
+            valign: 'center'
+            halign: 'right'
+            text_size: self.size
+            font_size: sp(18)
+            text: "Date 2"
+            size_hint_x: .3
+            color: (0, 1, 1, 1)
+
+        Label:
+            id: date_2_label
+            valign: 'center'
+            halign: 'left'
+            text_size: self.size
+            font_size: sp(18)
+            text: "Second time difference"
+            size_hint_x: .7
+
+    Label:
+        id: status_label
+        size_hint_y: root.hinty_status
+        valign: 'center'
+        halign: 'center'
+        text_size: self.size
+        font_size: sp(14)
+        valign: 'center'
+        halign: 'center'
+        color: 'A3C7D6'
+        text: ''
+        background_color: '#31326C'
+        padding: sp(10), 0
+
+    BoxLayout:
+        size_hint_y: root.hinty_buttons
+        spacing: sp(10)
+
+        Button:
+            canvas.before:
+                Color:
+                    rgb:hex('27293F') if self.state == 'normal' else hex('404363')
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [0, sp(20), 0, 0]
+            text: 'UPDATE DATE 1'
+            on_release: app.write_file_date(1, self)
+
+        Button:
+            canvas.before:
+                Color:
+                    rgb:hex('27293F') if self.state == 'normal' else hex('404363')
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [sp(20), 0, 0, 0]
+            text: 'UPDATE DATE 2'
+            on_release: app.write_file_date(2, self)
+
+<Button>:
+    bold: True
+    color: 'white'
+    font_size: sp(18)
+    text_size: self.size
+    valign: 'center'
+    halign: 'center'
+    padding: sp(10), 0
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    background_down: ''
