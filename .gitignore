@@ -5,6 +5,8 @@ __pycache__/
 
 # Environments
 .venv
+.idea
+.vscode
 
 # MyPy
 .mypy_cache/
@@ -12,10 +14,11 @@ __pycache__/
 dmypy.json
 
 # Additional
-.vscode
-features.txt
-requirements_dev.txt
-builds/build
-builds/dist
-data/data.json
+builds/*
+data/sqlite.db
+
+# Development
+setup.cfg
+pyproject.toml
 Makefile
+requirements_dev.txt

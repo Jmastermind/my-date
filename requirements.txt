@@ -1,1 +1,4 @@
 kivy
+sqlalchemy
+matplotlib
+pytest
